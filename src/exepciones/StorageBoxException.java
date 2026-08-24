@@ -8,6 +8,8 @@ package exepciones;
  *
  * @author UTN
  */
-public class StorageBoxException {
-    
+public class StorageBoxException extends Exception {
+    public StorageBoxException(String mensaje) {
+        super(mensaje);
+    }
 }
