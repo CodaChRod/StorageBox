@@ -26,17 +26,112 @@ public class Menu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        JPanelMenu = new javax.swing.JPanel();
+        BtnEspacios = new javax.swing.JButton();
+        BtnClientes = new javax.swing.JButton();
+        BtnServicios = new javax.swing.JButton();
+        BtnEmpleados = new javax.swing.JButton();
+        BtnContratos = new javax.swing.JButton();
+        BtnSalir = new javax.swing.JButton();
+        LabelTitulo = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        JPanelMenu.setBackground(new java.awt.Color(51, 51, 51));
+
+        BtnEspacios.setBackground(new java.awt.Color(0, 102, 102));
+        BtnEspacios.setFont(new java.awt.Font("Segoe UI", 3, 48)); // NOI18N
+        BtnEspacios.setForeground(new java.awt.Color(255, 255, 255));
+        BtnEspacios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/Imagenes/almacen(1).png"))); // NOI18N
+        BtnEspacios.setText("Espacios");
+
+        BtnClientes.setBackground(new java.awt.Color(102, 0, 102));
+        BtnClientes.setFont(new java.awt.Font("Segoe UI", 3, 48)); // NOI18N
+        BtnClientes.setForeground(new java.awt.Color(255, 255, 255));
+        BtnClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/Imagenes/humano.png"))); // NOI18N
+        BtnClientes.setText("Clientes");
+
+        BtnServicios.setBackground(new java.awt.Color(102, 102, 0));
+        BtnServicios.setFont(new java.awt.Font("Segoe UI", 3, 48)); // NOI18N
+        BtnServicios.setForeground(new java.awt.Color(255, 255, 255));
+        BtnServicios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/Imagenes/servicio-al-cliente(1).png"))); // NOI18N
+        BtnServicios.setText("Servicios");
+
+        BtnEmpleados.setBackground(new java.awt.Color(0, 0, 102));
+        BtnEmpleados.setFont(new java.awt.Font("Segoe UI", 3, 48)); // NOI18N
+        BtnEmpleados.setForeground(new java.awt.Color(255, 255, 255));
+        BtnEmpleados.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/Imagenes/empleado.png"))); // NOI18N
+        BtnEmpleados.setText("Empleados");
+
+        BtnContratos.setBackground(new java.awt.Color(0, 102, 0));
+        BtnContratos.setFont(new java.awt.Font("Segoe UI", 3, 48)); // NOI18N
+        BtnContratos.setForeground(new java.awt.Color(255, 255, 255));
+        BtnContratos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/Imagenes/contrato(2).png"))); // NOI18N
+        BtnContratos.setText("Contratos");
+
+        BtnSalir.setBackground(new java.awt.Color(153, 0, 0));
+        BtnSalir.setFont(new java.awt.Font("Segoe UI", 3, 48)); // NOI18N
+        BtnSalir.setForeground(new java.awt.Color(255, 255, 255));
+        BtnSalir.setText("Salir");
+
+        LabelTitulo.setFont(new java.awt.Font("Segoe UI", 3, 48)); // NOI18N
+        LabelTitulo.setText("Storage Box Ver..1");
+
+        javax.swing.GroupLayout JPanelMenuLayout = new javax.swing.GroupLayout(JPanelMenu);
+        JPanelMenu.setLayout(JPanelMenuLayout);
+        JPanelMenuLayout.setHorizontalGroup(
+            JPanelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(JPanelMenuLayout.createSequentialGroup()
+                .addGroup(JPanelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(JPanelMenuLayout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(JPanelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(JPanelMenuLayout.createSequentialGroup()
+                                .addComponent(BtnEspacios, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(BtnServicios, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(JPanelMenuLayout.createSequentialGroup()
+                                .addGroup(JPanelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(BtnEmpleados, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(BtnClientes, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(JPanelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(BtnSalir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(BtnContratos, javax.swing.GroupLayout.DEFAULT_SIZE, 347, Short.MAX_VALUE)))))
+                    .addGroup(JPanelMenuLayout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addComponent(LabelTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 706, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(32, Short.MAX_VALUE))
+        );
+        JPanelMenuLayout.setVerticalGroup(
+            JPanelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(JPanelMenuLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(LabelTitulo)
+                .addGap(18, 18, 18)
+                .addGroup(JPanelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(BtnEspacios)
+                    .addComponent(BtnServicios))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(JPanelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(BtnClientes)
+                    .addComponent(BtnContratos))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(JPanelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(BtnEmpleados)
+                    .addComponent(BtnSalir))
+                .addContainerGap(43, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(JPanelMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(JPanelMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -78,5 +173,13 @@ public class Menu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BtnClientes;
+    private javax.swing.JButton BtnContratos;
+    private javax.swing.JButton BtnEmpleados;
+    private javax.swing.JButton BtnEspacios;
+    private javax.swing.JButton BtnSalir;
+    private javax.swing.JButton BtnServicios;
+    private javax.swing.JPanel JPanelMenu;
+    private javax.swing.JLabel LabelTitulo;
     // End of variables declaration//GEN-END:variables
 }
