@@ -75,7 +75,7 @@ public class Menu extends javax.swing.JFrame {
         BtnSalir.setText("Salir");
 
         LabelTitulo.setFont(new java.awt.Font("Segoe UI", 3, 48)); // NOI18N
-        LabelTitulo.setText("Storage Box Ver..1");
+        LabelTitulo.setText("      Storage Box Ver..1");
 
         javax.swing.GroupLayout JPanelMenuLayout = new javax.swing.GroupLayout(JPanelMenu);
         JPanelMenu.setLayout(JPanelMenuLayout);
