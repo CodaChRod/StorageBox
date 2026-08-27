@@ -4,10 +4,12 @@
  */
 package controlador;
 
+
 /**
  *
  * @author bycha
  */
+
 public class Contratos {
-    
+   
 }
