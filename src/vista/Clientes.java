@@ -347,9 +347,10 @@ public class Clientes extends javax.swing.JPanel {
     }//GEN-LAST:event_BtnAgregarActionPerformed
 
     private void BtnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnVolverActionPerformed
-        Menu menu = new Menu();
-        menu.setVisible(true);
-        javax.swing.SwingUtilities.getWindowAncestor(this).dispose();        // TODO add your handling code here:
+        // TODO add your handling code here:
+             Menu panel = new Menu();
+        panel.setVisible(true);
+        SwingUtilities.getWindowAncestor(this).dispose();
     }//GEN-LAST:event_BtnVolverActionPerformed
 
     private void BtnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnActualizarActionPerformed

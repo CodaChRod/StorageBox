@@ -317,6 +317,9 @@ public class Empleados extends javax.swing.JPanel {
 
     private void BtnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnVolverActionPerformed
         // TODO add your handling code here:
+             Menu panel = new Menu();
+        panel.setVisible(true);
+        SwingUtilities.getWindowAncestor(this).dispose();
     }//GEN-LAST:event_BtnVolverActionPerformed
 
     private void BtnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnActualizarActionPerformed
