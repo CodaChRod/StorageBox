@@ -5,35 +5,39 @@
 package modelo;
 
 
-import modelo.Puesto;
-
 /**
  *
  * @author bycha
  */
 public class Empleado extends Persona{
-
+     private Puesto puesto;
+    private double salario;
     
-    
-    public Empleado(String identificacion, String nombre, String telefono) {
+    public Empleado(String identificacion, String nombre, String telefono, Puesto puesto) {
         super(identificacion, nombre, telefono);
+        this.puesto = puesto;
+        this.salario = (puesto != null) ? puesto.getSalario() : 0.0;
     }
-     Puesto Definido = Puesto.Administrador;
-
-    public void setDefinido(Puesto Definido) {
-        this.Definido = Definido;
+    
+    public Empleado() {
     }
-     
-    public void MostrarEstado(){
-  switch (Definido){
-      case Administrador -> System.out.println("Administrador");
-      case Recepcionista -> System.out.println("Recepcionista");
-      case Encargado_de_bodega -> System.out.println("Encargado_de_bodega");
-      case Mantenimiento -> System.out.println("Mantenimiento");
-      case Operador_de_carga -> System.out.println("Operario_de_carga");
-      
-  }
-  }
-  
-  
+    public Puesto getPuesto() {
+        return puesto;
+    }
+    public void setPuesto(Puesto puesto) {
+        this.puesto = puesto;
+        if (puesto != null) {
+            this.salario = puesto.getSalario(); // Carga automática del salario
+        }
+    }
+    public double getSalario() {
+        return salario;
+    }
+    public void setSalario(double salario) {
+        this.salario = salario;
+    }
+    @Override
+    public String toString() {
+        return super.toString() + " - " + (puesto != null ? puesto.getNombre() : "Sin puesto");
+    }
 }
