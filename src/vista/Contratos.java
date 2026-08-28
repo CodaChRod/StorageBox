@@ -31,8 +31,9 @@ public class Contratos extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         jButton6 = new javax.swing.JButton();
 
-        jButton6.setBackground(new java.awt.Color(0, 204, 0));
+        jButton6.setBackground(new java.awt.Color(153, 153, 0));
         jButton6.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
+        jButton6.setForeground(new java.awt.Color(0, 0, 0));
         jButton6.setText("Volver");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
