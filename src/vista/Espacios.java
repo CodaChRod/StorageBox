@@ -4,6 +4,8 @@
  */
 package vista;
 
+import java.awt.BorderLayout;
+import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
 /**
@@ -15,6 +17,24 @@ public class Espacios extends javax.swing.JPanel {
     /**
      * Creates new form Espacios
      */
+     private static Espacios instancia;
+       private void EscogerVentana(JPanel panel){
+    panel.setSize(760, 380);
+    panel.setLocation(0,0);
+    
+    jPanelAdmin.removeAll();
+        jPanelAdmin.add(panel, BorderLayout.CENTER);
+        jPanelAdmin.revalidate();
+        jPanelAdmin.repaint();
+     }
+    
+ public static Espacios getInstancia() {
+        return instancia;
+    }
+
+    public void mostrar() {
+        this.setVisible(true);
+    }
     public Espacios() {
         initComponents();
     }
@@ -30,17 +50,17 @@ public class Espacios extends javax.swing.JPanel {
 
         jPanelAdmin = new javax.swing.JPanel();
         LabelAdEspacios = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        BtnActualizar = new javax.swing.JButton();
+        BtnEliminar = new javax.swing.JButton();
+        BtnAgregar = new javax.swing.JButton();
+        BtnBuscar = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jButton6 = new javax.swing.JButton();
+        BtnVolver = new javax.swing.JButton();
 
         setPreferredSize(new java.awt.Dimension(760, 380));
 
@@ -50,29 +70,34 @@ public class Espacios extends javax.swing.JPanel {
         LabelAdEspacios.setText("     Administración de Espacios");
         LabelAdEspacios.setVerticalAlignment(javax.swing.SwingConstants.TOP);
 
-        jButton2.setBackground(new java.awt.Color(0, 153, 153));
-        jButton2.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
-        jButton2.setText("Actualizar");
+        BtnActualizar.setBackground(new java.awt.Color(0, 153, 153));
+        BtnActualizar.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
+        BtnActualizar.setText("Actualizar");
 
-        jButton3.setBackground(new java.awt.Color(153, 0, 0));
-        jButton3.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
-        jButton3.setText("Eliminar");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        BtnEliminar.setBackground(new java.awt.Color(153, 0, 0));
+        BtnEliminar.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
+        BtnEliminar.setText("Eliminar");
+        BtnEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                BtnEliminarActionPerformed(evt);
             }
         });
 
-        jButton4.setBackground(new java.awt.Color(0, 0, 153));
-        jButton4.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
-        jButton4.setText("Agregar");
-
-        jButton5.setBackground(new java.awt.Color(0, 102, 102));
-        jButton5.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
-        jButton5.setText("Buscar");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        BtnAgregar.setBackground(new java.awt.Color(0, 0, 153));
+        BtnAgregar.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
+        BtnAgregar.setText("Agregar");
+        BtnAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                BtnAgregarActionPerformed(evt);
+            }
+        });
+
+        BtnBuscar.setBackground(new java.awt.Color(0, 102, 102));
+        BtnBuscar.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
+        BtnBuscar.setText("Buscar");
+        BtnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnBuscarActionPerformed(evt);
             }
         });
 
@@ -121,12 +146,12 @@ public class Espacios extends javax.swing.JPanel {
                 .addContainerGap(381, Short.MAX_VALUE))
         );
 
-        jButton6.setBackground(new java.awt.Color(0, 204, 0));
-        jButton6.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
-        jButton6.setText("Volver");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        BtnVolver.setBackground(new java.awt.Color(0, 204, 0));
+        BtnVolver.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
+        BtnVolver.setText("Volver");
+        BtnVolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                BtnVolverActionPerformed(evt);
             }
         });
 
@@ -140,12 +165,12 @@ public class Espacios extends javax.swing.JPanel {
                     .addComponent(LabelAdEspacios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanelAdminLayout.createSequentialGroup()
                         .addGroup(jPanelAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(BtnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(BtnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanelAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jButton2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE)
-                                .addComponent(jButton4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(BtnActualizar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE)
+                                .addComponent(BtnAgregar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(BtnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
@@ -158,17 +183,17 @@ public class Espacios extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanelAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelAdminLayout.createSequentialGroup()
-                        .addComponent(jButton4)
+                        .addComponent(BtnAgregar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton2)
+                        .addComponent(BtnActualizar)
                         .addGap(14, 14, 14)
-                        .addComponent(jButton3)
+                        .addComponent(BtnEliminar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton5)
+                        .addComponent(BtnBuscar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton6))
+                        .addComponent(BtnVolver))
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(66, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -183,31 +208,39 @@ public class Espacios extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void BtnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEliminarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_BtnEliminarActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void BtnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBuscarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_BtnBuscarActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    private void BtnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnVolverActionPerformed
         // TODO add your handling code here:
             
             Menu panel = new Menu();
         panel.setVisible(true);
         SwingUtilities.getWindowAncestor(this).dispose();
     
-    }//GEN-LAST:event_jButton6ActionPerformed
+    }//GEN-LAST:event_BtnVolverActionPerformed
+
+    private void BtnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAgregarActionPerformed
+        // TODO add your handling code here:
+         Agregar panel = new Agregar();
+        EscogerVentana(panel);
+        
+       
+    }//GEN-LAST:event_BtnAgregarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BtnActualizar;
+    private javax.swing.JButton BtnAgregar;
+    private javax.swing.JButton BtnBuscar;
+    private javax.swing.JButton BtnEliminar;
+    private javax.swing.JButton BtnVolver;
     private javax.swing.JLabel LabelAdEspacios;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

@@ -4,6 +4,8 @@
  */
 package vista;
 
+import javax.swing.SwingUtilities;
+
 /**
  *
  * @author bycha
@@ -79,6 +81,11 @@ public class Agregar extends javax.swing.JPanel {
         BtnCancelar.setBackground(new java.awt.Color(153, 0, 0));
         BtnCancelar.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
         BtnCancelar.setText("Cancelar");
+        BtnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnCancelarActionPerformed(evt);
+            }
+        });
 
         BtnConfirmar.setBackground(new java.awt.Color(0, 102, 51));
         BtnConfirmar.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
@@ -173,6 +180,15 @@ public class Agregar extends javax.swing.JPanel {
     private void ComboTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboTipoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_ComboTipoActionPerformed
+
+    private void BtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCancelarActionPerformed
+        // TODO add your handling code here:
+               
+            Espacios panel = new Espacios();
+        panel.setVisible(true);
+        SwingUtilities.getWindowAncestor(this).dispose();
+    
+    }//GEN-LAST:event_BtnCancelarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
