@@ -54,13 +54,9 @@ public class Espacios extends javax.swing.JPanel {
         BtnEliminar = new javax.swing.JButton();
         BtnAgregar = new javax.swing.JButton();
         BtnBuscar = new javax.swing.JButton();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         BtnVolver = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTableAdministracion = new javax.swing.JTable();
 
         setPreferredSize(new java.awt.Dimension(760, 380));
 
@@ -101,51 +97,6 @@ public class Espacios extends javax.swing.JPanel {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
-        jLabel1.setText("Espacio");
-
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
-        jLabel2.setText("Tipo");
-
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
-        jLabel3.setText("Tamaño");
-
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
-        jLabel4.setText("Precio Mensual");
-
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
-        jLabel5.setText("Estado");
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel2)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel3)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel4)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel5)
-                .addContainerGap(23, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel5))
-                .addContainerGap(381, Short.MAX_VALUE))
-        );
-
         BtnVolver.setBackground(new java.awt.Color(0, 204, 0));
         BtnVolver.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
         BtnVolver.setText("Volver");
@@ -155,6 +106,20 @@ public class Espacios extends javax.swing.JPanel {
             }
         });
 
+        jTableAdministracion.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        jTableAdministracion.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "Espacio", "Tipo", "Tamaño", "Precio Mensual", "Estado"
+            }
+        ));
+        jScrollPane1.setViewportView(jTableAdministracion);
+
         javax.swing.GroupLayout jPanelAdminLayout = new javax.swing.GroupLayout(jPanelAdmin);
         jPanelAdmin.setLayout(jPanelAdminLayout);
         jPanelAdminLayout.setHorizontalGroup(
@@ -162,7 +127,7 @@ public class Espacios extends javax.swing.JPanel {
             .addGroup(jPanelAdminLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanelAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(LabelAdEspacios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(LabelAdEspacios, javax.swing.GroupLayout.DEFAULT_SIZE, 759, Short.MAX_VALUE)
                     .addGroup(jPanelAdminLayout.createSequentialGroup()
                         .addGroup(jPanelAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(BtnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -172,8 +137,7 @@ public class Espacios extends javax.swing.JPanel {
                                 .addComponent(BtnAgregar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addComponent(BtnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addComponent(jScrollPane1)))
                 .addContainerGap())
         );
         jPanelAdminLayout.setVerticalGroup(
@@ -192,7 +156,7 @@ public class Espacios extends javax.swing.JPanel {
                         .addComponent(BtnBuscar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(BtnVolver))
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -241,12 +205,8 @@ public class Espacios extends javax.swing.JPanel {
     private javax.swing.JButton BtnEliminar;
     private javax.swing.JButton BtnVolver;
     private javax.swing.JLabel LabelAdEspacios;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanelAdmin;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTableAdministracion;
     // End of variables declaration//GEN-END:variables
 }
