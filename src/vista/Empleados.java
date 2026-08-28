@@ -17,6 +17,7 @@ public class Empleados extends javax.swing.JPanel {
      */
     public Empleados() {
         initComponents();
+         cargarTabla();
     }
 
     /**
@@ -308,7 +309,26 @@ public class Empleados extends javax.swing.JPanel {
     }//GEN-LAST:event_BtnAgregarActionPerformed
 
     private void BtnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAceptarActionPerformed
-        // TODO add your handling code here:
+    try {
+        String id = jTextFieldID.getText();
+        String nombre = jTextFieldNombre.getText();
+        String tel = jTextFieldTeléfono.getText();
+        
+        // Puesto Administrador por defecto o según selección
+        modelo.Puesto puesto = modelo.Puesto.ADMINISTRADOR;
+        
+        modelo.Modelo.getInstancia().getControladorEmpleados().agregarEmpleado(id, nombre, tel, puesto);
+        javax.swing.JOptionPane.showMessageDialog(this, "Empleado guardado exitosamente.");
+        
+        jTextFieldID.setText("");
+        jTextFieldNombre.setText("");
+        jTextFieldTeléfono.setText("");
+        jTextFieldCorreo.setText("");
+        cargarTabla();
+    } catch (exepciones.StorageBoxException ex) {
+        javax.swing.JOptionPane.showMessageDialog(this, ex.getMessage(), "Error", javax.swing.JOptionPane.WARNING_MESSAGE);
+    }        
+    
     }//GEN-LAST:event_BtnAceptarActionPerformed
 
     private void BtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCancelarActionPerformed
@@ -316,10 +336,10 @@ public class Empleados extends javax.swing.JPanel {
     }//GEN-LAST:event_BtnCancelarActionPerformed
 
     private void BtnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnVolverActionPerformed
-        // TODO add your handling code here:
-             Menu panel = new Menu();
-        panel.setVisible(true);
-        SwingUtilities.getWindowAncestor(this).dispose();
+    Menu menu = new Menu();
+    menu.setVisible(true);
+    javax.swing.SwingUtilities.getWindowAncestor(this).dispose();        
+    
     }//GEN-LAST:event_BtnVolverActionPerformed
 
     private void BtnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnActualizarActionPerformed
@@ -327,14 +347,40 @@ public class Empleados extends javax.swing.JPanel {
     }//GEN-LAST:event_BtnActualizarActionPerformed
 
     private void BtnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEliminarActionPerformed
-        // TODO add your handling code here:
+  int fila = jTableDatosPerso.getSelectedRow();
+    if (fila == -1) {
+        javax.swing.JOptionPane.showMessageDialog(this, "Seleccione un empleado de la tabla.");
+        return;
+    }
+    String id = jTableDatosPerso.getValueAt(fila, 0).toString();
+    try {
+        modelo.Modelo.getInstancia().getControladorEmpleados().eliminarEmpleado(id);
+        javax.swing.JOptionPane.showMessageDialog(this, "Empleado eliminado.");
+        cargarTabla();
+    } catch (exepciones.StorageBoxException ex) {
+        javax.swing.JOptionPane.showMessageDialog(this, ex.getMessage(), "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+    }       
     }//GEN-LAST:event_BtnEliminarActionPerformed
 
     private void BtnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBuscarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_BtnBuscarActionPerformed
 
-
+public void cargarTabla() {
+    javax.swing.table.DefaultTableModel model = new javax.swing.table.DefaultTableModel(
+        new Object[]{"ID", "Nombre", "Puesto", "Salario", "Teléfono"}, 0
+    );
+    for (modelo.Empleado emp : modelo.Modelo.getInstancia().getControladorEmpleados().obtenerTodos()) {
+        model.addRow(new Object[]{
+            emp.getIdentificacion(),
+            emp.getNombre(),
+            emp.getPuesto() != null ? emp.getPuesto().getNombre() : "Sin puesto",
+            "₡" + String.format("%,.0f", emp.getSalario()),
+            emp.getTelefono()
+        });
+    }
+    jTableDatosPerso.setModel(model);
+}
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnAceptar;
     private javax.swing.JButton BtnActualizar;

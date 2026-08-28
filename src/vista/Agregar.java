@@ -90,6 +90,11 @@ public class Agregar extends javax.swing.JPanel {
         BtnConfirmar.setBackground(new java.awt.Color(0, 102, 51));
         BtnConfirmar.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
         BtnConfirmar.setText("Confirmar");
+        BtnConfirmar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnConfirmarActionPerformed(evt);
+            }
+        });
 
         TextPrecioMensual.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
 
@@ -178,7 +183,21 @@ public class Agregar extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ComboTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboTipoActionPerformed
-        // TODO add your handling code here:
+ String tipo = (String) ComboTipo.getSelectedItem();
+    if (tipo != null) {
+        if (tipo.equalsIgnoreCase("Pequeño")) {
+            TextTamaño.setText("5.0");
+            TextPrecioMensual.setText("25000.0");
+        } else if (tipo.equalsIgnoreCase("Mediano")) {
+            TextTamaño.setText("10.0");
+            TextPrecioMensual.setText("45000.0");
+        } else {
+            TextTamaño.setText("20.0");
+            TextPrecioMensual.setText("70000.0");
+        }
+        TextEstado.setText("DISPONIBLE");
+        TextEstado.setEditable(false);
+    }        // TODO add your handling code here:
     }//GEN-LAST:event_ComboTipoActionPerformed
 
     private void BtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCancelarActionPerformed
@@ -195,6 +214,26 @@ public class Agregar extends javax.swing.JPanel {
         contenedor.repaint();
     }
     }//GEN-LAST:event_BtnCancelarActionPerformed
+
+    private void BtnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnConfirmarActionPerformed
+ try {
+        String id = TextID.getText();
+        String tipoStr = (String) ComboTipo.getSelectedItem();
+        modelo.TipoEspacio tipo = tipoStr.equalsIgnoreCase("Pequeño") ? modelo.TipoEspacio.PEQUENO :
+                                  tipoStr.equalsIgnoreCase("Mediano") ? modelo.TipoEspacio.MEDIANO : modelo.TipoEspacio.GRANDE;
+        double metros = Double.parseDouble(TextTamaño.getText());
+        double precio = Double.parseDouble(TextPrecioMensual.getText());
+        
+        modelo.Modelo.getInstancia().getControladorEspacios().agregarEspacio(id, tipo, metros, precio);
+        javax.swing.JOptionPane.showMessageDialog(this, "¡Espacio registrado con éxito!");
+        
+        BtnCancelarActionPerformed(evt); // Regresa a la tabla de espacios
+    } catch (NumberFormatException ex) {
+        javax.swing.JOptionPane.showMessageDialog(this, "El tamaño y el precio deben ser numéricos.", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+    } catch (exepciones.StorageBoxException ex) {
+        javax.swing.JOptionPane.showMessageDialog(this, ex.getMessage(), "Error", javax.swing.JOptionPane.WARNING_MESSAGE);
+    }        // TODO add your handling code here:
+    }//GEN-LAST:event_BtnConfirmarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

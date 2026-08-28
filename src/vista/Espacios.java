@@ -37,6 +37,7 @@ public class Espacios extends javax.swing.JPanel {
     }
     public Espacios() {
         initComponents();
+         cargarTabla();
     }
 
     /**
@@ -173,7 +174,19 @@ public class Espacios extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEliminarActionPerformed
-        // TODO add your handling code here:
+  int fila = jTableAdministracion.getSelectedRow();
+    if (fila == -1) {
+        javax.swing.JOptionPane.showMessageDialog(this, "Seleccione un espacio de la tabla.", "Aviso", javax.swing.JOptionPane.WARNING_MESSAGE);
+        return;
+    }
+    String numero = jTableAdministracion.getValueAt(fila, 0).toString();
+    try {
+        modelo.Modelo.getInstancia().getControladorEspacios().eliminarEspacio(numero);
+        javax.swing.JOptionPane.showMessageDialog(this, "Espacio eliminado correctamente.");
+        cargarTabla();
+    } catch (exepciones.StorageBoxException ex) {
+        javax.swing.JOptionPane.showMessageDialog(this, ex.getMessage(), "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+    }        // TODO add your handling code here:
     }//GEN-LAST:event_BtnEliminarActionPerformed
 
     private void BtnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBuscarActionPerformed
@@ -196,7 +209,21 @@ public class Espacios extends javax.swing.JPanel {
         
        
     }//GEN-LAST:event_BtnAgregarActionPerformed
-
+public void cargarTabla() {
+    javax.swing.table.DefaultTableModel model = new javax.swing.table.DefaultTableModel(
+        new Object[]{"Número", "Tipo", "Tamaño (m²)", "Precio Mensual", "Estado"}, 0
+    );
+    for (modelo.Espacio e : modelo.Modelo.getInstancia().getControladorEspacios().obtenerTodos()) {
+        model.addRow(new Object[]{
+            e.getNumeroEspacio(),
+            e.getTipo().getDescripcion(),
+            e.getMetrosCuadrados(),
+            "₡" + e.getPrecioMensual(),
+            e.getEstadoOcupacion()
+        });
+    }
+    jTableAdministracion.setModel(model);
+}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnActualizar;
