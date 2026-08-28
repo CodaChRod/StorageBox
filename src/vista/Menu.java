@@ -4,15 +4,37 @@
  */
 package vista;
 
+import java.awt.BorderLayout;
+import javax.swing.JPanel;
+
 /**
  *
  * @author bycha
  */
+
 public class Menu extends javax.swing.JFrame {
 
     /**
      * Creates new form Menu
      */
+    private static Menu instancia;
+       private void EscogerVentana(JPanel panel){
+    panel.setSize(760, 380);
+    panel.setLocation(0,0);
+    
+    JPanelMenu.removeAll();
+        JPanelMenu.add(panel, BorderLayout.CENTER);
+        JPanelMenu.revalidate();
+        JPanelMenu.repaint();
+     }
+    
+ public static Menu getInstancia() {
+        return instancia;
+    }
+
+    public void mostrar() {
+        this.setVisible(true);
+    }
     public Menu() {
         initComponents();
     }
@@ -44,35 +66,65 @@ public class Menu extends javax.swing.JFrame {
         BtnEspacios.setForeground(new java.awt.Color(255, 255, 255));
         BtnEspacios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/Imagenes/almacen(1).png"))); // NOI18N
         BtnEspacios.setText("Espacios");
+        BtnEspacios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnEspaciosActionPerformed(evt);
+            }
+        });
 
         BtnClientes.setBackground(new java.awt.Color(102, 0, 102));
         BtnClientes.setFont(new java.awt.Font("Segoe UI", 3, 48)); // NOI18N
         BtnClientes.setForeground(new java.awt.Color(255, 255, 255));
         BtnClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/Imagenes/humano.png"))); // NOI18N
         BtnClientes.setText("Clientes");
+        BtnClientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnClientesActionPerformed(evt);
+            }
+        });
 
         BtnServicios.setBackground(new java.awt.Color(102, 102, 0));
         BtnServicios.setFont(new java.awt.Font("Segoe UI", 3, 48)); // NOI18N
         BtnServicios.setForeground(new java.awt.Color(255, 255, 255));
         BtnServicios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/Imagenes/servicio-al-cliente(1).png"))); // NOI18N
         BtnServicios.setText("Servicios");
+        BtnServicios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnServiciosActionPerformed(evt);
+            }
+        });
 
         BtnEmpleados.setBackground(new java.awt.Color(0, 0, 102));
         BtnEmpleados.setFont(new java.awt.Font("Segoe UI", 3, 48)); // NOI18N
         BtnEmpleados.setForeground(new java.awt.Color(255, 255, 255));
         BtnEmpleados.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/Imagenes/empleado.png"))); // NOI18N
         BtnEmpleados.setText("Empleados");
+        BtnEmpleados.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnEmpleadosActionPerformed(evt);
+            }
+        });
 
         BtnContratos.setBackground(new java.awt.Color(0, 102, 0));
         BtnContratos.setFont(new java.awt.Font("Segoe UI", 3, 48)); // NOI18N
         BtnContratos.setForeground(new java.awt.Color(255, 255, 255));
         BtnContratos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/Imagenes/contrato(2).png"))); // NOI18N
         BtnContratos.setText("Contratos");
+        BtnContratos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnContratosActionPerformed(evt);
+            }
+        });
 
         BtnSalir.setBackground(new java.awt.Color(153, 0, 0));
         BtnSalir.setFont(new java.awt.Font("Segoe UI", 3, 48)); // NOI18N
         BtnSalir.setForeground(new java.awt.Color(255, 255, 255));
         BtnSalir.setText("Salir");
+        BtnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnSalirActionPerformed(evt);
+            }
+        });
 
         LabelTitulo.setFont(new java.awt.Font("Segoe UI", 3, 48)); // NOI18N
         LabelTitulo.setText("      Storage Box Ver..1");
@@ -120,7 +172,7 @@ public class Menu extends javax.swing.JFrame {
                 .addGroup(JPanelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BtnEmpleados)
                     .addComponent(BtnSalir))
-                .addContainerGap(43, Short.MAX_VALUE))
+                .addContainerGap(44, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -137,40 +189,77 @@ public class Menu extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void BtnEspaciosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEspaciosActionPerformed
+        // TODO add your handling code here:
+        Espacios panel = new Espacios();
+        EscogerVentana(panel);
+    }//GEN-LAST:event_BtnEspaciosActionPerformed
+
+    private void BtnClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnClientesActionPerformed
+        // TODO add your handling code here:
+        Clientes panel = new Clientes();
+        EscogerVentana(panel);
+    }//GEN-LAST:event_BtnClientesActionPerformed
+
+    private void BtnEmpleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEmpleadosActionPerformed
+        // TODO add your handling code here:
+        Empleados panel = new Empleados();
+        EscogerVentana(panel);
+    }//GEN-LAST:event_BtnEmpleadosActionPerformed
+
+    private void BtnServiciosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnServiciosActionPerformed
+        // TODO add your handling code here:
+        Servicios panel = new Servicios();
+        EscogerVentana(panel);
+    }//GEN-LAST:event_BtnServiciosActionPerformed
+
+    private void BtnContratosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnContratosActionPerformed
+        // TODO add your handling code here:
+        Contratos panel = new Contratos();
+        EscogerVentana(panel);
+
+    }//GEN-LAST:event_BtnContratosActionPerformed
+
+    private void BtnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSalirActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_BtnSalirActionPerformed
+
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+   
+    /* Set the Nimbus look and feel */
+    //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+    /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
+     */
+    try {
+        for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+            if ("Nimbus".equals(info.getName())) {
+                javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                break;
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Menu().setVisible(true);
-            }
-        });
+    } catch (ClassNotFoundException ex) {
+        java.util.logging.Logger.getLogger(Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    } catch (InstantiationException ex) {
+        java.util.logging.Logger.getLogger(Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    } catch (IllegalAccessException ex) {
+        java.util.logging.Logger.getLogger(Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        java.util.logging.Logger.getLogger(Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
     }
+    //</editor-fold>
+
+    /* Create and display the form */
+    java.awt.EventQueue.invokeLater(new Runnable() {
+        public void run() {
+            new Menu().setVisible(true);
+        }
+    });
+}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnClientes;
