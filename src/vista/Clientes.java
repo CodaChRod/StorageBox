@@ -312,7 +312,26 @@ public class Clientes extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        // TODO add your handling code here:
+ try {
+            String id = jTextFieldID.getText();
+            String nombre = jTextFieldNombre.getText();
+            String tel = jTextFieldTeléfono.getText();
+            String correo = jTextFieldCorreo.getText();
+            
+            // Asume fecha por defecto o campo de fecha
+            java.time.LocalDate fechaNac = java.time.LocalDate.of(2000, 1, 1);
+            
+            modelo.Modelo.getInstancia().getControladorClientes().agregarCliente(id, nombre, tel, fechaNac, correo);
+            javax.swing.JOptionPane.showMessageDialog(this, "Cliente guardado con éxito.");
+            
+            jTextFieldID.setText("");
+            jTextFieldNombre.setText("");
+            jTextFieldTeléfono.setText("");
+            jTextFieldCorreo.setText("");
+            cargarTabla();
+        } catch (exepciones.StorageBoxException ex) {
+            javax.swing.JOptionPane.showMessageDialog(this, ex.getMessage(), "Error", javax.swing.JOptionPane.WARNING_MESSAGE);
+        }        // TODO add your handling code here:
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
@@ -328,7 +347,9 @@ public class Clientes extends javax.swing.JPanel {
     }//GEN-LAST:event_BtnAgregarActionPerformed
 
     private void BtnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnVolverActionPerformed
-        // TODO add your handling code here:
+        Menu menu = new Menu();
+        menu.setVisible(true);
+        javax.swing.SwingUtilities.getWindowAncestor(this).dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_BtnVolverActionPerformed
 
     private void BtnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnActualizarActionPerformed
@@ -336,13 +357,40 @@ public class Clientes extends javax.swing.JPanel {
     }//GEN-LAST:event_BtnActualizarActionPerformed
 
     private void BtnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEliminarActionPerformed
-        // TODO add your handling code here:
+       int fila = jTableDatosPerso.getSelectedRow();
+        if (fila == -1) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Seleccione un cliente de la tabla.");
+            return;
+        }
+        String id = jTableDatosPerso.getValueAt(fila, 0).toString();
+        try {
+            boolean tieneContratos = modelo.Modelo.getInstancia().getControladorContratos().clienteTieneContratosActivosOPendientes(id);
+            modelo.Modelo.getInstancia().getControladorClientes().eliminarCliente(id, tieneContratos);
+            javax.swing.JOptionPane.showMessageDialog(this, "Cliente eliminado.");
+            cargarTabla();
+        } catch (exepciones.StorageBoxException ex) {
+            javax.swing.JOptionPane.showMessageDialog(this, ex.getMessage(), "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+        }        // TODO add your handling code here:
     }//GEN-LAST:event_BtnEliminarActionPerformed
 
     private void BtnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBuscarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_BtnBuscarActionPerformed
-
+    public void cargarTabla() {
+        javax.swing.table.DefaultTableModel model = new javax.swing.table.DefaultTableModel(
+            new Object[]{"ID", "Nombre", "Edad", "Teléfono", "Correo Electrónico"}, 0
+        );
+        for (modelo.Cliente c : modelo.Modelo.getInstancia().getControladorClientes().obtenerTodos()) {
+            model.addRow(new Object[]{
+                c.getIdentificacion(),
+                c.getNombre(),
+                c.getEdad() + " años",
+                c.getTelefono(),
+                c.getCorreoElectronico()
+            });
+        }
+        jTableDatosPerso.setModel(model);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnActualizar;
