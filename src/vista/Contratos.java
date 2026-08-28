@@ -31,16 +31,16 @@ public class Contratos extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jTextFieldID = new javax.swing.JTextField();
+        jTextCliente = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jTextFieldNombre = new javax.swing.JTextField();
+        jTextFieldEspacio = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jTextFieldTeléfono = new javax.swing.JTextField();
+        jTextFieldFechaInicio = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jTextFieldCorreo = new javax.swing.JTextField();
+        jTextFieldFechaFin = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        jTextAreaServiciosAdicionales = new javax.swing.JTextArea();
         jPanel3 = new javax.swing.JPanel();
         BtnAgregar = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -53,40 +53,35 @@ public class Contratos extends javax.swing.JPanel {
         jPanel2.setBackground(new java.awt.Color(0, 102, 153));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Cliente");
 
-        jTextFieldID.setBackground(new java.awt.Color(102, 102, 102));
-        jTextFieldID.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        jTextCliente.setBackground(new java.awt.Color(102, 102, 102));
+        jTextCliente.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Espacio");
 
-        jTextFieldNombre.setBackground(new java.awt.Color(102, 102, 102));
-        jTextFieldNombre.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        jTextFieldEspacio.setBackground(new java.awt.Color(102, 102, 102));
+        jTextFieldEspacio.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Fecha de Inicio");
 
-        jTextFieldTeléfono.setBackground(new java.awt.Color(102, 102, 102));
-        jTextFieldTeléfono.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        jTextFieldFechaInicio.setBackground(new java.awt.Color(102, 102, 102));
+        jTextFieldFechaInicio.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Servicios Adicionales");
 
-        jTextFieldCorreo.setBackground(new java.awt.Color(102, 102, 102));
-        jTextFieldCorreo.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        jTextFieldFechaFin.setBackground(new java.awt.Color(102, 102, 102));
+        jTextFieldFechaFin.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Fecha de Finalización");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        jTextAreaServiciosAdicionales.setColumns(20);
+        jTextAreaServiciosAdicionales.setRows(5);
+        jScrollPane1.setViewportView(jTextAreaServiciosAdicionales);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -98,16 +93,16 @@ public class Contratos extends javax.swing.JPanel {
                         .addGap(21, 21, 21)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
-                            .addComponent(jTextFieldID, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jTextCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(22, 22, 22)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
-                            .addComponent(jTextFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldEspacio, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel3)
-                            .addComponent(jTextFieldTeléfono, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldFechaInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel5)
-                            .addComponent(jTextFieldCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldFechaFin, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel4)))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -118,19 +113,19 @@ public class Contratos extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextFieldID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTextCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTextFieldEspacio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextFieldTeléfono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTextFieldFechaInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextFieldCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTextFieldFechaFin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -142,7 +137,6 @@ public class Contratos extends javax.swing.JPanel {
 
         BtnAgregar.setBackground(new java.awt.Color(51, 102, 255));
         BtnAgregar.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
-        BtnAgregar.setForeground(new java.awt.Color(0, 0, 0));
         BtnAgregar.setText("Agregar");
         BtnAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -166,7 +160,6 @@ public class Contratos extends javax.swing.JPanel {
 
         BtnVolver.setBackground(new java.awt.Color(153, 153, 0));
         BtnVolver.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
-        BtnVolver.setForeground(new java.awt.Color(0, 0, 0));
         BtnVolver.setText("Volver");
         BtnVolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -176,7 +169,6 @@ public class Contratos extends javax.swing.JPanel {
 
         BtnActualizar.setBackground(new java.awt.Color(0, 153, 51));
         BtnActualizar.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
-        BtnActualizar.setForeground(new java.awt.Color(0, 0, 0));
         BtnActualizar.setText("Actualizar");
         BtnActualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -186,7 +178,6 @@ public class Contratos extends javax.swing.JPanel {
 
         BtnEliminar.setBackground(new java.awt.Color(255, 0, 0));
         BtnEliminar.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
-        BtnEliminar.setForeground(new java.awt.Color(0, 0, 0));
         BtnEliminar.setText("Eliminar");
         BtnEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -196,7 +187,6 @@ public class Contratos extends javax.swing.JPanel {
 
         BtnBuscar.setBackground(new java.awt.Color(0, 255, 102));
         BtnBuscar.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
-        BtnBuscar.setForeground(new java.awt.Color(0, 0, 0));
         BtnBuscar.setText("Buscar");
         BtnBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -274,7 +264,47 @@ public class Contratos extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAgregarActionPerformed
-        // TODO add your handling code here:
+    try {
+        String idCliente = jTextCliente.getText().trim();
+        String numEspacio = jTextFieldEspacio.getText().trim();
+        String fechaInicioStr = jTextFieldFechaFin.getText().trim();
+        String fechaFinStr = jTextFieldFechaInicio.getText().trim();
+        // 1. Validar Cliente
+        modelo.Cliente cliente = modelo.Modelo.getInstancia().getControladorClientes().buscarPorIdentificacion(idCliente);
+        if (cliente == null) {
+            javax.swing.JOptionPane.showMessageDialog(this, "El cliente no existe. Regístrelo en el módulo de Clientes.", "Aviso", javax.swing.JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        // 2. Validar Espacio
+        modelo.Espacio espacio = modelo.Modelo.getInstancia().getControladorEspacios().buscarPorNumero(numEspacio);
+        if (espacio == null) {
+            javax.swing.JOptionPane.showMessageDialog(this, "El espacio #" + numEspacio + " no existe.", "Aviso", javax.swing.JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        // 3. Validar Fechas
+        java.time.LocalDate fInicio = java.time.LocalDate.parse(fechaInicioStr);
+        java.time.LocalDate fFin = java.time.LocalDate.parse(fechaFinStr);
+        // 4. Crear Contrato
+        modelo.Contrato nuevo = modelo.Modelo.getInstancia().getControladorContratos().crearContrato(cliente, espacio, fInicio, fFin, null);
+        javax.swing.JOptionPane.showMessageDialog(this, 
+            "¡Contrato #" + nuevo.getNumeroContrato() + " creado con éxito!\n" +
+            "Estado: PENDIENTE\n" +
+            "Duración: " + nuevo.getCantidadDias() + " días (" + nuevo.getCantidadPeriodos() + " períodos de 30 días)\n" +
+            "Subtotal: ₡" + String.format("%,.2f", nuevo.getSubtotal()) + "\n" +
+            "IVA (13%): ₡" + String.format("%,.2f", nuevo.getImpuestos()) + "\n" +
+            "Total: ₡" + String.format("%,.2f", nuevo.getTotal())
+        );
+        // Limpiar campos y refrescar tabla
+        jTextCliente.setText("");
+        jTextFieldEspacio.setText("");
+        jTextFieldFechaFin.setText("");
+        jTextFieldFechaInicio.setText("");
+        cargarTabla();
+    } catch (java.time.format.DateTimeParseException ex) {
+        javax.swing.JOptionPane.showMessageDialog(this, "Formato de fecha inválido. Debe ser AAAA-MM-DD (ej: 2026-09-01)", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+    } catch (exepciones.StorageBoxException ex) {
+        javax.swing.JOptionPane.showMessageDialog(this, ex.getMessage(), "Error de Regla de Negocio", javax.swing.JOptionPane.WARNING_MESSAGE);
+    }
 
         Menu panel = new Menu();
         panel.setVisible(true);
@@ -289,7 +319,22 @@ public class Contratos extends javax.swing.JPanel {
     }//GEN-LAST:event_BtnVolverActionPerformed
 
     private void BtnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnActualizarActionPerformed
-        // TODO add your handling code here:
+    int fila = jTableDatosPerso.getSelectedRow();
+    if (fila == -1) {
+        javax.swing.JOptionPane.showMessageDialog(this, "Seleccione un contrato de la tabla para activarlo.");
+        return;
+    }
+    int numContrato = Integer.parseInt(jTableDatosPerso.getValueAt(fila, 0).toString());
+    modelo.Contrato contrato = modelo.Modelo.getInstancia().getControladorContratos().buscarPorNumero(numContrato);
+    if (contrato != null) {
+        try {
+            contrato.activarContrato();
+            javax.swing.JOptionPane.showMessageDialog(this, "Contrato #" + numContrato + " activado. El espacio ahora está OCUPADO.");
+            cargarTabla();
+        } catch (exepciones.StorageBoxException ex) {
+            javax.swing.JOptionPane.showMessageDialog(this, ex.getMessage(), "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+        }
+    }
     }//GEN-LAST:event_BtnActualizarActionPerformed
 
     private void BtnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEliminarActionPerformed
@@ -300,6 +345,23 @@ public class Contratos extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_BtnBuscarActionPerformed
 
+public void cargarTabla() {
+    javax.swing.table.DefaultTableModel model = new javax.swing.table.DefaultTableModel(
+        new Object[]{"CodContrato", "Cliente", "Espacio", "Fecha Inicio", "Fecha Fin", "Estado", "Total"}, 0
+    );
+    for (modelo.Contrato c : modelo.Modelo.getInstancia().getControladorContratos().obtenerTodos()) {
+        model.addRow(new Object[]{
+            c.getNumeroContrato(),
+            c.getCliente().getNombre() + " (" + c.getCliente().getIdentificacion() + ")",
+            c.getEspacio().getNumeroEspacio(),
+            c.getFechaInicio(),
+            c.getFechaFinalizacion(),
+            c.getEstado(),
+            "₡" + String.format("%,.0f", c.getTotal())
+        });
+    }
+    jTableDatosPerso.setModel(model);
+}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnActualizar;
@@ -318,10 +380,10 @@ public class Contratos extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTableDatosPerso;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextFieldCorreo;
-    private javax.swing.JTextField jTextFieldID;
-    private javax.swing.JTextField jTextFieldNombre;
-    private javax.swing.JTextField jTextFieldTeléfono;
+    private javax.swing.JTextArea jTextAreaServiciosAdicionales;
+    private javax.swing.JTextField jTextCliente;
+    private javax.swing.JTextField jTextFieldEspacio;
+    private javax.swing.JTextField jTextFieldFechaFin;
+    private javax.swing.JTextField jTextFieldFechaInicio;
     // End of variables declaration//GEN-END:variables
 }
