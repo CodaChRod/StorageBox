@@ -183,11 +183,17 @@ public class Agregar extends javax.swing.JPanel {
 
     private void BtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCancelarActionPerformed
         // TODO add your handling code here:
-               
-            Espacios panel = new Espacios();
-        panel.setVisible(true);
-        SwingUtilities.getWindowAncestor(this).dispose();
+     Espacios panel = new Espacios();
+    panel.setSize(760, 380);
+    panel.setLocation(0, 0);
     
+    java.awt.Container contenedor = this.getParent();
+    if (contenedor != null) {
+        contenedor.removeAll();
+        contenedor.add(panel, java.awt.BorderLayout.CENTER);
+        contenedor.revalidate();
+        contenedor.repaint();
+    }
     }//GEN-LAST:event_BtnCancelarActionPerformed
 
 
