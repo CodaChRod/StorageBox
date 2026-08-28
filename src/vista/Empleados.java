@@ -30,7 +30,6 @@ public class Empleados extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        BtnAgregar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableDatosPerso = new javax.swing.JTable();
         BtnVolver = new javax.swing.JButton();
@@ -45,23 +44,11 @@ public class Empleados extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         jTextFieldTeléfono = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jTextFieldCorreo = new javax.swing.JTextField();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
+        jTextFieldPuesto = new javax.swing.JTextField();
         BtnAceptar = new javax.swing.JButton();
         BtnCancelar = new javax.swing.JButton();
 
         jPanel1.setBackground(new java.awt.Color(51, 51, 51));
-
-        BtnAgregar.setBackground(new java.awt.Color(51, 102, 255));
-        BtnAgregar.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
-        BtnAgregar.setForeground(new java.awt.Color(0, 0, 0));
-        BtnAgregar.setText("Agregar");
-        BtnAgregar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnAgregarActionPerformed(evt);
-            }
-        });
 
         jTableDatosPerso.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jTableDatosPerso.setModel(new javax.swing.table.DefaultTableModel(
@@ -72,14 +59,13 @@ public class Empleados extends javax.swing.JPanel {
                 {null, null, null, null, null}
             },
             new String [] {
-                "ID", "Nombre", "Edad", "Teléfono", "Correo Electrónico"
+                "ID", "Nombre", "Puesto", "Teléfono", "Salario"
             }
         ));
         jScrollPane1.setViewportView(jTableDatosPerso);
 
         BtnVolver.setBackground(new java.awt.Color(153, 153, 0));
         BtnVolver.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
-        BtnVolver.setForeground(new java.awt.Color(0, 0, 0));
         BtnVolver.setText("Volver");
         BtnVolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -89,7 +75,6 @@ public class Empleados extends javax.swing.JPanel {
 
         BtnActualizar.setBackground(new java.awt.Color(0, 153, 51));
         BtnActualizar.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
-        BtnActualizar.setForeground(new java.awt.Color(0, 0, 0));
         BtnActualizar.setText("Actualizar");
         BtnActualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -99,7 +84,6 @@ public class Empleados extends javax.swing.JPanel {
 
         BtnEliminar.setBackground(new java.awt.Color(255, 0, 0));
         BtnEliminar.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
-        BtnEliminar.setForeground(new java.awt.Color(0, 0, 0));
         BtnEliminar.setText("Eliminar");
         BtnEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -109,7 +93,6 @@ public class Empleados extends javax.swing.JPanel {
 
         BtnBuscar.setBackground(new java.awt.Color(0, 255, 102));
         BtnBuscar.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
-        BtnBuscar.setForeground(new java.awt.Color(0, 0, 0));
         BtnBuscar.setText("Buscar");
         BtnBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -129,9 +112,7 @@ public class Empleados extends javax.swing.JPanel {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(BtnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(BtnAgregar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(BtnActualizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(BtnActualizar)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(BtnEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -142,15 +123,13 @@ public class Empleados extends javax.swing.JPanel {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BtnAgregar)
-                    .addComponent(BtnEliminar))
+                .addComponent(BtnEliminar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BtnBuscar)
                     .addComponent(BtnActualizar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 408, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(BtnVolver)
                 .addContainerGap())
@@ -159,41 +138,28 @@ public class Empleados extends javax.swing.JPanel {
         jPanelDatosPerso.setBackground(new java.awt.Color(0, 102, 153));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("ID");
 
         jTextFieldID.setBackground(new java.awt.Color(102, 102, 102));
         jTextFieldID.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Nombre");
 
         jTextFieldNombre.setBackground(new java.awt.Color(102, 102, 102));
         jTextFieldNombre.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Teléfono");
 
         jTextFieldTeléfono.setBackground(new java.awt.Color(102, 102, 102));
         jTextFieldTeléfono.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel4.setText("Correo Electrónico");
+        jLabel4.setText("Puesto");
 
-        jTextFieldCorreo.setBackground(new java.awt.Color(102, 102, 102));
-        jTextFieldCorreo.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
-
-        jRadioButton1.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
-        jRadioButton1.setForeground(new java.awt.Color(0, 0, 0));
-        jRadioButton1.setSelected(true);
-        jRadioButton1.setText("Activos");
-
-        jRadioButton2.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
-        jRadioButton2.setForeground(new java.awt.Color(0, 0, 0));
-        jRadioButton2.setText("Pendientes");
+        jTextFieldPuesto.setBackground(new java.awt.Color(102, 102, 102));
+        jTextFieldPuesto.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
 
         BtnAceptar.setBackground(new java.awt.Color(0, 153, 153));
         BtnAceptar.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
@@ -226,19 +192,12 @@ public class Empleados extends javax.swing.JPanel {
                         .addGap(22, 22, 22)
                         .addComponent(jTextFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanelDatosPersoLayout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addComponent(jTextFieldTeléfono, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanelDatosPersoLayout.createSequentialGroup()
                         .addGap(80, 80, 80)
                         .addComponent(jLabel1))
                     .addGroup(jPanelDatosPersoLayout.createSequentialGroup()
                         .addGap(22, 22, 22)
                         .addGroup(jPanelDatosPersoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanelDatosPersoLayout.createSequentialGroup()
-                                .addComponent(jRadioButton1)
-                                .addGap(20, 20, 20)
-                                .addComponent(jRadioButton2))
-                            .addComponent(jTextFieldCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldPuesto, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(BtnAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(BtnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanelDatosPersoLayout.createSequentialGroup()
@@ -246,12 +205,15 @@ public class Empleados extends javax.swing.JPanel {
                         .addComponent(jLabel2))
                     .addGroup(jPanelDatosPersoLayout.createSequentialGroup()
                         .addGap(74, 74, 74)
-                        .addComponent(jLabel3)))
+                        .addComponent(jLabel3))
+                    .addGroup(jPanelDatosPersoLayout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addGroup(jPanelDatosPersoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanelDatosPersoLayout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(jLabel4))
+                            .addComponent(jTextFieldTeléfono, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(36, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelDatosPersoLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel4)
-                .addGap(46, 46, 46))
         );
         jPanelDatosPersoLayout.setVerticalGroup(
             jPanelDatosPersoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -271,12 +233,8 @@ public class Empleados extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextFieldCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(jPanelDatosPersoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jRadioButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jRadioButton1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTextFieldPuesto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(63, 63, 63)
                 .addComponent(BtnAceptar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(BtnCancelar)
@@ -300,39 +258,43 @@ public class Empleados extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void BtnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAgregarActionPerformed
-        // TODO add your handling code here:
-
-        Menu panel = new Menu();
-        panel.setVisible(true);
-        SwingUtilities.getWindowAncestor(this).dispose();
-    }//GEN-LAST:event_BtnAgregarActionPerformed
-
     private void BtnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAceptarActionPerformed
-    try {
-        String id = jTextFieldID.getText();
-        String nombre = jTextFieldNombre.getText();
-        String tel = jTextFieldTeléfono.getText();
+   try {
+        String id = jTextFieldID.getText().trim();
+        String nombre = jTextFieldNombre.getText().trim();
+        String tel = jTextFieldTeléfono.getText().trim();
+        String puestoTexto = jTextFieldPuesto.getText().trim(); 
         
-        // Puesto Administrador por defecto o según selección
+  
         modelo.Puesto puesto = modelo.Puesto.ADMINISTRADOR;
+        if (puestoTexto.equalsIgnoreCase("Recepcionista")) {
+            puesto = modelo.Puesto.RECEPCIONISTA;
+        } else if (puestoTexto.toLowerCase().contains("bodega")) {
+            puesto = modelo.Puesto.ENCARGADO_BODEGA;
+        } else if (puestoTexto.toLowerCase().contains("mantenimiento")) {
+            puesto = modelo.Puesto.MANTENIMIENTO;
+        } else if (puestoTexto.toLowerCase().contains("carga") || puestoTexto.toLowerCase().contains("operario")) {
+            puesto = modelo.Puesto.OPERARIO_CARGA;
+        }
         
         modelo.Modelo.getInstancia().getControladorEmpleados().agregarEmpleado(id, nombre, tel, puesto);
-        javax.swing.JOptionPane.showMessageDialog(this, "Empleado guardado exitosamente.");
         
         jTextFieldID.setText("");
         jTextFieldNombre.setText("");
         jTextFieldTeléfono.setText("");
-        jTextFieldCorreo.setText("");
+        jTextFieldPuesto.setText("");
         cargarTabla();
+        
     } catch (exepciones.StorageBoxException ex) {
         javax.swing.JOptionPane.showMessageDialog(this, ex.getMessage(), "Error", javax.swing.JOptionPane.WARNING_MESSAGE);
-    }        
-    
+    }
     }//GEN-LAST:event_BtnAceptarActionPerformed
 
     private void BtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCancelarActionPerformed
-        // TODO add your handling code here:
+    jTextFieldID.setText("");
+    jTextFieldNombre.setText("");
+    jTextFieldTeléfono.setText("");
+    jTextFieldPuesto.setText("");        
     }//GEN-LAST:event_BtnCancelarActionPerformed
 
     private void BtnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnVolverActionPerformed
@@ -343,7 +305,22 @@ public class Empleados extends javax.swing.JPanel {
     }//GEN-LAST:event_BtnVolverActionPerformed
 
     private void BtnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnActualizarActionPerformed
-        // TODO add your handling code here:
+    try {
+        String id = jTextFieldID.getText().trim();
+        String nombre = jTextFieldNombre.getText().trim();
+        String tel = jTextFieldTeléfono.getText().trim();
+        modelo.Puesto puesto = modelo.Puesto.ADMINISTRADOR; 
+        
+        if (id.isEmpty()) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Seleccione un empleado o ingrese su ID.", "Aviso", javax.swing.JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        modelo.Modelo.getInstancia().getControladorEmpleados().actualizarEmpleado(id, nombre, tel, puesto);
+        cargarTabla();
+    } catch (exepciones.StorageBoxException ex) {
+        javax.swing.JOptionPane.showMessageDialog(this, ex.getMessage(), "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+    }        
     }//GEN-LAST:event_BtnActualizarActionPerformed
 
     private void BtnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEliminarActionPerformed
@@ -363,28 +340,41 @@ public class Empleados extends javax.swing.JPanel {
     }//GEN-LAST:event_BtnEliminarActionPerformed
 
     private void BtnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBuscarActionPerformed
-        // TODO add your handling code here:
+    String criterio = javax.swing.JOptionPane.showInputDialog(this, "Ingrese identificación o nombre del empleado:");
+    if (criterio != null && !criterio.trim().isEmpty()) {
+        javax.swing.table.DefaultTableModel model = (javax.swing.table.DefaultTableModel) jTableDatosPerso.getModel();
+        model.setRowCount(0);
+        for (modelo.Empleado emp : modelo.Modelo.getInstancia().getControladorEmpleados().buscarEmpleados(criterio)) {
+            model.addRow(new Object[]{
+                emp.getIdentificacion(),
+                emp.getNombre(),
+                emp.getPuesto() != null ? emp.getPuesto().getNombre() : "Sin puesto",
+                emp.getTelefono(),
+                "₡" + String.format("%,.0f", emp.getSalario())
+            });
+        }
+    } else {
+        cargarTabla();
+    }        
     }//GEN-LAST:event_BtnBuscarActionPerformed
 
 public void cargarTabla() {
-    javax.swing.table.DefaultTableModel model = new javax.swing.table.DefaultTableModel(
-        new Object[]{"ID", "Nombre", "Puesto", "Salario", "Teléfono"}, 0
-    );
+    javax.swing.table.DefaultTableModel model = (javax.swing.table.DefaultTableModel) jTableDatosPerso.getModel();
+    model.setRowCount(0);
+    
     for (modelo.Empleado emp : modelo.Modelo.getInstancia().getControladorEmpleados().obtenerTodos()) {
         model.addRow(new Object[]{
             emp.getIdentificacion(),
             emp.getNombre(),
             emp.getPuesto() != null ? emp.getPuesto().getNombre() : "Sin puesto",
-            "₡" + String.format("%,.0f", emp.getSalario()),
-            emp.getTelefono()
+            emp.getTelefono(),
+            "₡" + String.format("%,.0f", emp.getSalario())
         });
     }
-    jTableDatosPerso.setModel(model);
 }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnAceptar;
     private javax.swing.JButton BtnActualizar;
-    private javax.swing.JButton BtnAgregar;
     private javax.swing.JButton BtnBuscar;
     private javax.swing.JButton BtnCancelar;
     private javax.swing.JButton BtnEliminar;
@@ -395,13 +385,11 @@ public void cargarTabla() {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanelDatosPerso;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableDatosPerso;
-    private javax.swing.JTextField jTextFieldCorreo;
     private javax.swing.JTextField jTextFieldID;
     private javax.swing.JTextField jTextFieldNombre;
+    private javax.swing.JTextField jTextFieldPuesto;
     private javax.swing.JTextField jTextFieldTeléfono;
     // End of variables declaration//GEN-END:variables
 }

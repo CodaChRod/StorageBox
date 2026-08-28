@@ -197,7 +197,7 @@ public class Agregar extends javax.swing.JPanel {
         }
         TextEstado.setText("DISPONIBLE");
         TextEstado.setEditable(false);
-    }        // TODO add your handling code here:
+    }        
     }//GEN-LAST:event_ComboTipoActionPerformed
 
     private void BtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCancelarActionPerformed
@@ -225,14 +225,13 @@ public class Agregar extends javax.swing.JPanel {
         double precio = Double.parseDouble(TextPrecioMensual.getText());
         
         modelo.Modelo.getInstancia().getControladorEspacios().agregarEspacio(id, tipo, metros, precio);
-        javax.swing.JOptionPane.showMessageDialog(this, "¡Espacio registrado con éxito!");
         
-        BtnCancelarActionPerformed(evt); // Regresa a la tabla de espacios
+        BtnCancelarActionPerformed(evt); 
     } catch (NumberFormatException ex) {
         javax.swing.JOptionPane.showMessageDialog(this, "El tamaño y el precio deben ser numéricos.", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
     } catch (exepciones.StorageBoxException ex) {
         javax.swing.JOptionPane.showMessageDialog(this, ex.getMessage(), "Error", javax.swing.JOptionPane.WARNING_MESSAGE);
-    }        // TODO add your handling code here:
+    }       
     }//GEN-LAST:event_BtnConfirmarActionPerformed
 
 

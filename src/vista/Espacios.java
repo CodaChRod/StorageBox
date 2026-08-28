@@ -70,6 +70,11 @@ public class Espacios extends javax.swing.JPanel {
         BtnActualizar.setBackground(new java.awt.Color(0, 153, 153));
         BtnActualizar.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
         BtnActualizar.setText("Actualizar");
+        BtnActualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnActualizarActionPerformed(evt);
+            }
+        });
 
         BtnEliminar.setBackground(new java.awt.Color(153, 0, 0));
         BtnEliminar.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
@@ -190,7 +195,22 @@ public class Espacios extends javax.swing.JPanel {
     }//GEN-LAST:event_BtnEliminarActionPerformed
 
     private void BtnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBuscarActionPerformed
-        // TODO add your handling code here:
+    String criterio = javax.swing.JOptionPane.showInputDialog(this, "Ingrese número de espacio a buscar:");
+    if (criterio != null && !criterio.trim().isEmpty()) {
+        javax.swing.table.DefaultTableModel model = (javax.swing.table.DefaultTableModel) jTableAdministracion.getModel();
+        model.setRowCount(0);
+        for (modelo.Espacio e : modelo.Modelo.getInstancia().getControladorEspacios().filtrarEspacios(criterio, null, null, null, null)) {
+            model.addRow(new Object[]{
+                e.getNumeroEspacio(),
+                e.getTipo().getDescripcion(),
+                e.getMetrosCuadrados() + " m²",
+                "₡" + String.format("%,.0f", e.getPrecioMensual()),
+                e.getEstadoOcupacion()
+            });
+        }
+    } else {
+        cargarTabla(); // Si cancela o deja vacío, muestra todos
+    }        // TODO add your handling code here:
     }//GEN-LAST:event_BtnBuscarActionPerformed
 
     private void BtnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnVolverActionPerformed
@@ -209,20 +229,55 @@ public class Espacios extends javax.swing.JPanel {
         
        
     }//GEN-LAST:event_BtnAgregarActionPerformed
+
+    private void BtnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnActualizarActionPerformed
+    int fila = jTableAdministracion.getSelectedRow();
+    if (fila == -1) {
+        javax.swing.JOptionPane.showMessageDialog(this, "Seleccione un espacio de la tabla para actualizar su precio.", "Aviso", javax.swing.JOptionPane.WARNING_MESSAGE);
+        return;
+    }
+    
+    String numero = jTableAdministracion.getValueAt(fila, 0).toString();
+    modelo.Espacio espacio = modelo.Modelo.getInstancia().getControladorEspacios().buscarPorNumero(numero);
+    
+    if (espacio != null) {
+        String nuevoPrecioStr = javax.swing.JOptionPane.showInputDialog(this, 
+            "Modificar precio del Espacio #" + numero + " (" + espacio.getTipo().getDescripcion() + "):\nIngrese el nuevo precio mensual:", 
+            espacio.getPrecioMensual()
+        );
+        
+        if (nuevoPrecioStr != null && !nuevoPrecioStr.trim().isEmpty()) {
+            try {
+                double nuevoPrecio = Double.parseDouble(nuevoPrecioStr.trim());
+                modelo.Modelo.getInstancia().getControladorEspacios().actualizarEspacio(
+                    numero, 
+                    espacio.getTipo(), 
+                    espacio.getMetrosCuadrados(), 
+                    nuevoPrecio
+                );
+                javax.swing.JOptionPane.showMessageDialog(this, "¡Espacio #" + numero + " actualizado con éxito!");
+                cargarTabla(); // Refresca la tabla de inmediato
+            } catch (NumberFormatException ex) {
+                javax.swing.JOptionPane.showMessageDialog(this, "El precio debe ser un número válido.", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+            } catch (exepciones.StorageBoxException ex) {
+                javax.swing.JOptionPane.showMessageDialog(this, ex.getMessage(), "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }
+    }//GEN-LAST:event_BtnActualizarActionPerformed
 public void cargarTabla() {
-    javax.swing.table.DefaultTableModel model = new javax.swing.table.DefaultTableModel(
-        new Object[]{"Número", "Tipo", "Tamaño (m²)", "Precio Mensual", "Estado"}, 0
-    );
+    javax.swing.table.DefaultTableModel model = (javax.swing.table.DefaultTableModel) jTableAdministracion.getModel();
+    model.setRowCount(0);
+    
     for (modelo.Espacio e : modelo.Modelo.getInstancia().getControladorEspacios().obtenerTodos()) {
         model.addRow(new Object[]{
             e.getNumeroEspacio(),
             e.getTipo().getDescripcion(),
-            e.getMetrosCuadrados(),
-            "₡" + e.getPrecioMensual(),
+            e.getMetrosCuadrados() + " m²",
+            "₡" + String.format("%,.0f", e.getPrecioMensual()),
             e.getEstadoOcupacion()
         });
     }
-    jTableAdministracion.setModel(model);
 }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

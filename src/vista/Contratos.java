@@ -17,6 +17,8 @@ public class Contratos extends javax.swing.JPanel {
      */
     public Contratos() {
         initComponents();
+            cargarTabla(); 
+            
     }
 
     /**
@@ -305,10 +307,6 @@ public class Contratos extends javax.swing.JPanel {
     } catch (exepciones.StorageBoxException ex) {
         javax.swing.JOptionPane.showMessageDialog(this, ex.getMessage(), "Error de Regla de Negocio", javax.swing.JOptionPane.WARNING_MESSAGE);
     }
-
-        Menu panel = new Menu();
-        panel.setVisible(true);
-        SwingUtilities.getWindowAncestor(this).dispose();
     }//GEN-LAST:event_BtnAgregarActionPerformed
 
     private void BtnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnVolverActionPerformed
@@ -338,29 +336,66 @@ public class Contratos extends javax.swing.JPanel {
     }//GEN-LAST:event_BtnActualizarActionPerformed
 
     private void BtnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEliminarActionPerformed
-        // TODO add your handling code here:
+   int fila = jTableDatosPerso.getSelectedRow();
+    if (fila == -1) {
+        javax.swing.JOptionPane.showMessageDialog(this, "Seleccione un contrato de la tabla para cancelarlo/finalizarlo.", "Aviso", javax.swing.JOptionPane.WARNING_MESSAGE);
+        return;
+    }
+    int numContrato = Integer.parseInt(jTableDatosPerso.getValueAt(fila, 0).toString());
+    modelo.Contrato contrato = modelo.Modelo.getInstancia().getControladorContratos().buscarPorNumero(numContrato);
+    if (contrato != null) {
+        try {
+            if (contrato.getEstado() == modelo.EstadosCTR.Pendiente) {
+                contrato.cancelarContrato();
+                javax.swing.JOptionPane.showMessageDialog(this, "Contrato #" + numContrato + " cancelado.");
+            } else if (contrato.getEstado() == modelo.EstadosCTR.Activo) {
+                contrato.finalizarContrato();
+                javax.swing.JOptionPane.showMessageDialog(this, "Contrato #" + numContrato + " finalizado. El espacio vuelve a estar DISPONIBLE.");
+            }
+            cargarTabla();
+        } catch (exepciones.StorageBoxException ex) {
+            javax.swing.JOptionPane.showMessageDialog(this, ex.getMessage(), "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+        }
+    }       
     }//GEN-LAST:event_BtnEliminarActionPerformed
 
     private void BtnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBuscarActionPerformed
-        // TODO add your handling code here:
+     String criterio = javax.swing.JOptionPane.showInputDialog(this, "Ingrese número de contrato o nombre del cliente:");
+    if (criterio != null && !criterio.trim().isEmpty()) {
+        javax.swing.table.DefaultTableModel model = (javax.swing.table.DefaultTableModel) jTableDatosPerso.getModel();
+        model.setRowCount(0);
+        for (modelo.Contrato c : modelo.Modelo.getInstancia().getControladorContratos().obtenerTodos()) {
+            if (String.valueOf(c.getNumeroContrato()).contains(criterio) || 
+                c.getCliente().getNombre().toLowerCase().contains(criterio.toLowerCase())) {
+                model.addRow(new Object[]{
+                    c.getNumeroContrato(),
+                    c.getCliente().getNombre(),
+                    c.getEspacio().getNumeroEspacio(),
+                    c.getFechaInicio(),
+                    c.getFechaFinalizacion(),
+                    c.getEstado()
+                });
+            }
+        }
+    } else {
+        cargarTabla();
+    }
     }//GEN-LAST:event_BtnBuscarActionPerformed
 
 public void cargarTabla() {
-    javax.swing.table.DefaultTableModel model = new javax.swing.table.DefaultTableModel(
-        new Object[]{"CodContrato", "Cliente", "Espacio", "Fecha Inicio", "Fecha Fin", "Estado", "Total"}, 0
-    );
+    javax.swing.table.DefaultTableModel model = (javax.swing.table.DefaultTableModel) jTableDatosPerso.getModel();
+    model.setRowCount(0);
+    
     for (modelo.Contrato c : modelo.Modelo.getInstancia().getControladorContratos().obtenerTodos()) {
         model.addRow(new Object[]{
             c.getNumeroContrato(),
-            c.getCliente().getNombre() + " (" + c.getCliente().getIdentificacion() + ")",
+            c.getCliente().getNombre(),
             c.getEspacio().getNumeroEspacio(),
             c.getFechaInicio(),
             c.getFechaFinalizacion(),
-            c.getEstado(),
-            "₡" + String.format("%,.0f", c.getTotal())
+            c.getEstado()
         });
     }
-    jTableDatosPerso.setModel(model);
 }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -18,15 +18,20 @@ public class Menu extends javax.swing.JFrame {
      * Creates new form Menu
      */
     private static Menu instancia;
-       private void EscogerVentana(JPanel panel){
-    panel.setSize(760, 380);
-    panel.setLocation(0,0);
+private void EscogerVentana(JPanel panel){
+    panel.setSize(800, 560);
+    panel.setLocation(0, 0);
     
     JPanelMenu.removeAll();
-        JPanelMenu.add(panel, BorderLayout.CENTER);
-        JPanelMenu.revalidate();
-        JPanelMenu.repaint();
-     }
+    JPanelMenu.setLayout(new java.awt.BorderLayout()); 
+    JPanelMenu.add(panel, java.awt.BorderLayout.CENTER);
+    
+    this.setSize(820, 600); 
+    this.setLocationRelativeTo(null);
+    
+    JPanelMenu.revalidate();
+    JPanelMenu.repaint();
+}
     
  public static Menu getInstancia() {
         return instancia;

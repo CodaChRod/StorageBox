@@ -17,6 +17,7 @@ public class Servicios extends javax.swing.JPanel {
      */
     public Servicios() {
         initComponents();
+            cargarTabla(); 
     }
 
     /**
@@ -76,6 +77,11 @@ public class Servicios extends javax.swing.JPanel {
         BtnAgregar.setBackground(new java.awt.Color(0, 0, 153));
         BtnAgregar.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
         BtnAgregar.setText("Agregar");
+        BtnAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnAgregarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -204,9 +210,50 @@ public class Servicios extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void BtnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBuscarActionPerformed
-        // TODO add your handling code here:
+    String criterio = jTextBuscar.getText().trim();
+    javax.swing.table.DefaultTableModel model = (javax.swing.table.DefaultTableModel) jTableServicio.getModel();
+    model.setRowCount(0);
+    for (modelo.ServicioAdicional s : modelo.Modelo.getInstancia().getControladorServicios().buscarServicios(criterio)) {
+        model.addRow(new Object[]{
+            s.getCodigo(),
+            s.getNombre(),
+            s.getDescripcion(),
+            "₡" + String.format("%,.0f", s.getPrecio())
+        });
+    }
     }//GEN-LAST:event_BtnBuscarActionPerformed
 
+    private void BtnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAgregarActionPerformed
+  try {
+        String nombre = jTextNombre.getText().trim();
+        String desc = jTextDescripción.getText().trim();
+        double precio = Double.parseDouble(jTextPrecio.getText().trim());
+        modelo.Modelo.getInstancia().getControladorServicios().agregarServicio(nombre, desc, precio);
+        javax.swing.JOptionPane.showMessageDialog(this, "¡Servicio registrado exitosamente!");
+        jTextNombre.setText("");
+        jTextDescripción.setText("");
+        jTextPrecio.setText("");
+        cargarTabla();
+    } catch (NumberFormatException ex) {
+        javax.swing.JOptionPane.showMessageDialog(this, "El precio debe ser un número válido.", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+    } catch (exepciones.StorageBoxException ex) {
+        javax.swing.JOptionPane.showMessageDialog(this, ex.getMessage(), "Error", javax.swing.JOptionPane.WARNING_MESSAGE);
+    }
+    }//GEN-LAST:event_BtnAgregarActionPerformed
+
+public void cargarTabla() {
+    javax.swing.table.DefaultTableModel model = (javax.swing.table.DefaultTableModel) jTableServicio.getModel();
+    model.setRowCount(0);
+    
+    for (modelo.ServicioAdicional s : modelo.Modelo.getInstancia().getControladorServicios().obtenerTodos()) {
+        model.addRow(new Object[]{
+            s.getCodigo(),
+            s.getNombre(),
+            s.getDescripcion(),
+            "₡" + String.format("%,.0f", s.getPrecio())
+        });
+    }
+}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnAgregar;
