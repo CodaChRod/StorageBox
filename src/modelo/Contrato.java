@@ -4,13 +4,13 @@
  */
 package modelo;
 
-import exepciones.StorageBoxException;
 
-import java.time.LocalDateTime;
-import java.time.LocalTime;
-import modelo.Cliente;
-import modelo.EstadosCTR;
-import static modelo.EstadosCTR.Pendiente;
+
+import exepciones.StorageBoxException;
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -18,72 +18,100 @@ import static modelo.EstadosCTR.Pendiente;
  */
 
 public class Contrato extends Cliente {
-   private int numContrato;
-   private LocalDateTime ahora;
-   private LocalDateTime FechaInicio;
-   private LocalDateTime FechaFinalizacion;
-
-    public Contrato(int numContrato, LocalDateTime ahora, LocalDateTime FechaInicio, LocalDateTime FechaFinalizacion) {
-        this.numContrato = numContrato;
-        this.ahora = ahora;
-        this.FechaInicio = FechaInicio;
-        this.FechaFinalizacion = FechaFinalizacion;
+    
+    private int numeroContrato;
+    private Cliente cliente;
+    private Espacio espacio;
+    private LocalDate fechaInicio;
+    private LocalDate fechaFinalizacion;
+    private EstadosCTR estado;
+    private List<ServicioAdicional> serviciosAdicionales;
+    
+    public Contrato(int numeroContrato, Cliente cliente, Espacio espacio, LocalDate fechaInicio, LocalDate fechaFinalizacion) {
+        this.numeroContrato = numeroContrato;
+        this.cliente = cliente;
+        this.espacio = espacio;
+        this.fechaInicio = fechaInicio;
+        this.fechaFinalizacion = fechaFinalizacion;
+        this.estado = EstadosCTR.Pendiente; // Pendiente por defecto
+        this.serviciosAdicionales = new ArrayList<>();
     }
-   
-  EstadosCTR estado = EstadosCTR.Pendiente;
-
-
-    public void setEstado(EstadosCTR estado) {
-        this.estado = estado;
-    }
- 
-  public void MostrarEstado(){
-  switch (estado){
-      case Pendiente -> System.out.println("Pendiente");
-      case Activo -> System.out.println("Activo");
-      case Finalizado -> System.out.println("Finalizado");
-      case Cancelado -> System.out.println("Cancelado");
-  }
-}
-   public void ActivarContrato() throws StorageBoxException{
-       if (estado != EstadosCTR.Pendiente){
-           throw new StorageBoxException("El contrato no esta disponible actualmente, intentalo de nuevo.");    
-       }
-   }
-    public EstadosCTR FinalizarContrato() throws StorageBoxException{
-       if (estado != EstadosCTR.Activo){
-           throw new StorageBoxException("El contrato no pudo ser finalizado");   
-}
-           estado = EstadosCTR.Finalizado;
-
-return estado;
-       }
-      
-     public EstadosCTR CancelarContrato() throws StorageBoxException{
-       if (estado != EstadosCTR.Pendiente){
-           throw new StorageBoxException("El contrato no puedo ser cancelado");   
-}
-           estado = EstadosCTR.Cancelado;
-
-return estado;
-       }
-public void GenerarCodContrato(){
-        numContrato++;
-        System.out.println("EL numero de contrato es: "+numContrato);
-
-    }
-public void ValidacionFechaInicio() throws StorageBoxException{
-        if (FechaInicio.isBefore(ahora)){
-            throw new StorageBoxException("No es posible ingresar dicha fecha"); 
+    
+    public int getNumeroContrato() { return numeroContrato; }
+    public Cliente getCliente() { return cliente; }
+    public Espacio getEspacio() { return espacio; }
+    public LocalDate getFechaInicio() { return fechaInicio; }
+    public LocalDate getFechaFinalizacion() { return fechaFinalizacion; }
+    public EstadosCTR getEstado() { return estado; }
+    public void setEstado(EstadosCTR estado) { this.estado = estado; }
+    public List<ServicioAdicional> getServiciosAdicionales() { return serviciosAdicionales; }
+    public void agregarServicio(ServicioAdicional servicio) {
+        if (servicio != null) {
+            this.serviciosAdicionales.add(servicio);
         }
+    }
+    
+    // Cálculos propios del negocio solicitados por la rúbrica:
+    public long getCantidadDias() {
+        if (fechaInicio == null || fechaFinalizacion == null) return 0;
+        return ChronoUnit.DAYS.between(fechaInicio, fechaFinalizacion);
+    }
+    
+    public int getCantidadPeriodos() {
+        long dias = getCantidadDias();
+        if (dias <= 0) return 1;
+        return (int) Math.ceil(dias / 30.0); // Cada período corresponde a 30 días o fracción
+    }
+    
+    public double getTotalServicios() {
+        double total = 0.0;
+        for (ServicioAdicional s : serviciosAdicionales) {
+            total += s.getPrecio();
+        }
+        return total;
+    }
+    
+    public double getTotal() {
+        double costoEspacio = (espacio != null ? espacio.getPrecioMensual() : 0.0) * getCantidadPeriodos();
+        return costoEspacio + getTotalServicios();
         
-}
-        public void ValidacionFechaFinalizacion() throws StorageBoxException{
-        if (FechaFinalizacion.isBefore(FechaInicio)){
-            throw new StorageBoxException("No es posible ingresar dicha fecha"); 
+    }
+    public double getSubtotal() {
+        // Los precios ya incluyen impuestos según el enunciado (13% IVA desglosado)
+        return getTotal() / 1.13;
+    }
+    public double getImpuestos() {
+        return getTotal() - getSubtotal();
+    }
+    
+    // Métodos de cambio de estado con excepciones de regla de negocio
+    public void activarContrato() throws StorageBoxException {
+        if (estado != EstadosCTR.Pendiente) {
+            throw new StorageBoxException("Solo se puede activar un contrato en estado Pendiente.");
         }
-       
+        this.estado = EstadosCTR.Activo;
+        if (espacio != null) {
+            espacio.setEstadoOcupacion(EstadoEspacio.OCUPADO);
         }
+    }
+    public void finalizarContrato() throws StorageBoxException {
+        if (estado != EstadosCTR.Activo) {
+            throw new StorageBoxException("Solo se puede finalizar un contrato en estado Activo.");
+        }
+        this.estado = EstadosCTR.Finalizado;
+        if (espacio != null) {
+            espacio.setEstadoOcupacion(EstadoEspacio.DISPONIBLE);
+        }
+    }
+    public void cancelarContrato() throws StorageBoxException {
+        if (estado != EstadosCTR.Pendiente) {
+            throw new StorageBoxException("Solo se puede cancelar un contrato en estado Pendiente.");
+        }
+        this.estado = EstadosCTR.Cancelado;
+        if (espacio != null) {
+            espacio.setEstadoOcupacion(EstadoEspacio.DISPONIBLE);
+        }
+    }
    }
    
 
